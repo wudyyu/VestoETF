@@ -1,0 +1,355 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"getInvestTokenAmounts(uint256)": "05def347",
+			"getRedeemTokenAmounts(uint256)": "ce7ddbef",
+			"getTokens()": "aa6ca808",
+			"investWithToken(address,address,uint256,uint256,bytes[])": "22b1c027",
+			"redeemToToken(address,address,uint256,uint256,bytes[])": "a0398af3",
+			"setFee(address,uint24,uint24)": "a553618b"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [],
+			"name": "InvalidArrayLength",
+			"type": "error"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes",
+					"name": "swapPath",
+					"type": "bytes"
+				}
+			],
+			"name": "InvalidSwapPath",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "LessThanMinMintAmount",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "OverSlippage",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "SafeTransferETHFailed",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "TokenExists",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "TokenNotFound",
+			"type": "error"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "mintAmount",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "paidAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "InvestedWithETH",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "srcToken",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "mintAmount",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "totalPaid",
+					"type": "uint256"
+				}
+			],
+			"name": "InvestedWithToken",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "burnAmount",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "receivedAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "RedeemedToETH",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "dstToken",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "burnAmount",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "receivedAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "RedeemedToToken",
+			"type": "event"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "mintAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "getInvestTokenAmounts",
+			"outputs": [
+				{
+					"internalType": "uint256[]",
+					"name": "tokenAmounts",
+					"type": "uint256[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "burnAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "getRedeemTokenAmounts",
+			"outputs": [
+				{
+					"internalType": "uint256[]",
+					"name": "tokenAmounts",
+					"type": "uint256[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "getTokens",
+			"outputs": [
+				{
+					"internalType": "address[]",
+					"name": "",
+					"type": "address[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "srcToken",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "mintAmount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "maxSrcTokenAmount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bytes[]",
+					"name": "swapPaths",
+					"type": "bytes[]"
+				}
+			],
+			"name": "investWithToken",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "dstToken",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "burnAmount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "minDstTokenAmount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bytes[]",
+					"name": "swapPaths",
+					"type": "bytes[]"
+				}
+			],
+			"name": "redeemToToken",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "feeTo_",
+					"type": "address"
+				},
+				{
+					"internalType": "uint24",
+					"name": "investFee_",
+					"type": "uint24"
+				},
+				{
+					"internalType": "uint24",
+					"name": "redeemFee_",
+					"type": "uint24"
+				}
+			],
+			"name": "setFee",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

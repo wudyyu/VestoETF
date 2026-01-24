@@ -1,0 +1,363 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "InvalidArrayLength",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "swapPath",
+						"type": "bytes"
+					}
+				],
+				"name": "InvalidSwapPath",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "LessThanMinMintAmount",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "OverSlippage",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SafeTransferETHFailed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "TokenExists",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "TokenNotFound",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "mintAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "paidAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "InvestedWithETH",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "srcToken",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "mintAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalPaid",
+						"type": "uint256"
+					}
+				],
+				"name": "InvestedWithToken",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "burnAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "receivedAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "RedeemedToETH",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "dstToken",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "burnAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "receivedAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "RedeemedToToken",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "mintAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "getInvestTokenAmounts",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "tokenAmounts",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "burnAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "getRedeemTokenAmounts",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "tokenAmounts",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTokens",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "srcToken",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "mintAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxSrcTokenAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes[]",
+						"name": "swapPaths",
+						"type": "bytes[]"
+					}
+				],
+				"name": "investWithToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "dstToken",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "burnAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minDstTokenAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes[]",
+						"name": "swapPaths",
+						"type": "bytes[]"
+					}
+				],
+				"name": "redeemToToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "feeTo_",
+						"type": "address"
+					},
+					{
+						"internalType": "uint24",
+						"name": "investFee_",
+						"type": "uint24"
+					},
+					{
+						"internalType": "uint24",
+						"name": "redeemFee_",
+						"type": "uint24"
+					}
+				],
+				"name": "setFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"errors": {
+				"LessThanMinMintAmount()": [
+					{
+						"details": "当投资金额小于最小铸造数量时抛出"
+					}
+				],
+				"TokenExists()": [
+					{
+						"details": "当尝试添加已存在的代币时抛出"
+					}
+				],
+				"TokenNotFound()": [
+					{
+						"details": "当尝试移除不存在的代币时抛出"
+					}
+				]
+			},
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getRedeemTokenAmounts(uint256)": {
+					"notice": "查询赎回指定数量份额后能获得的基础代币数量"
+				},
+				"investWithToken(address,address,uint256,uint256,bytes[])": {
+					"notice": "使用特定代币进行投资（申购基金份额）"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interfaces/IETFTrading.sol": "IETFTrading"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interfaces/IETFTrading.sol": {
+			"keccak256": "0x69a0da1a7e363b2f98399e691518700d0b88c06fedff9b22f3ed928c6206d6f1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://673015a25f9888bcb99df95d1d54feaa59b4872c6a5360530c866cc517096f93",
+				"dweb:/ipfs/QmXtSkg1AC2XJKn5sN6zxkncV9YWgVLfAoAGFrR35ZA2zv"
+			]
+		}
+	},
+	"version": 1
+}

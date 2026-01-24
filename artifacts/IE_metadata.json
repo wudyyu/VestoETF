@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interfaces/IETFTrading.sol": "IE"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interfaces/IETFTrading.sol": {
+			"keccak256": "0xc755abd16f6cca573fe87a8455150b3154ee469ab82eab1d1a140d3bbbaa4587",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c9af60becfe48cd8ad8c75757e4732d432f273ebe399383625e0ed395da73194",
+				"dweb:/ipfs/QmWe9W18gc48Xu4N4hjShC7puiNSKcXMQ9ih9KmjCguYPB"
+			]
+		}
+	},
+	"version": 1
+}

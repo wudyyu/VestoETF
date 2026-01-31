@@ -1,0 +1,163 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "tokenIn",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "tokenOut",
+								"type": "address"
+							},
+							{
+								"internalType": "uint24",
+								"name": "fee",
+								"type": "uint24"
+							},
+							{
+								"internalType": "address",
+								"name": "recipient",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountIn",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amountOutMinimum",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint160",
+								"name": "sqrtPriceLimitX96",
+								"type": "uint160"
+							}
+						],
+						"internalType": "struct IETFSwapRouter.ExactInputSingleParams",
+						"name": "params",
+						"type": "tuple"
+					}
+				],
+				"name": "exactInputSingle",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "fee0",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fee1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "uniswapV3FlashCallback",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))": {
+					"details": "Setting amountin to 0 will cause the contract to look up its own balance, and swap the entire amount, enabling contracts to send tokens before calling this function.",
+					"params": {
+						"params": "The parameters necessary for the swap, encoded as 'ExactInputSingleParams' in calldata"
+					},
+					"returns": {
+						"amountOut": "The amount of the received token"
+					}
+				},
+				"uniswapV3FlashCallback(uint256,uint256,bytes)": {
+					"details": "In the implementation you must repay the pool the tokens sent by flash plus the computed fee amounts. The caller of this method must be checked to be a UniswapV3Pool deployed by the canonical UniswapV3Factory.",
+					"params": {
+						"data": "Any data passed through by the caller via the IUniswapV3PoolActions#flash call",
+						"fee0": "The fee amount in token0 due to the pool by the end of the flash",
+						"fee1": "The fee amount in token1 due to the pool by the end of the flash"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))": {
+					"notice": "Swaps amountin of one token for as much as possible of another token"
+				},
+				"uniswapV3FlashCallback(uint256,uint256,bytes)": {
+					"notice": "Called to `msg.sender` after transferring to the recipient from IUniswapV3Pool#flash."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interfaces/IETFSwapRouter.sol": "IETFSwapRouter"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": [
+			":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+			":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+			":forge-std/=lib/openzeppelin-contracts/lib/forge-std/src/",
+			":halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/"
+		]
+	},
+	"sources": {
+		"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol": {
+			"keccak256": "0x151ba1777392771025f0fca946c95fbc16ec4b5eff05e1f236115b99bd574de2",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://738a50c25d9d26ca3fabb1865bf6a0cdd8d7a2eec9dbfbd1fc000c81fb8e2b5e",
+				"dweb:/ipfs/QmQjgCiLhrq5eLJgQcVHV24MRHyf6YdVzrGH8Ms7LnSSRA"
+			]
+		},
+		"contracts/interfaces/IETFSwapRouter.sol": {
+			"keccak256": "0xc3a2cc22ad57da5dfeced88421e7b2476498b24184fb7c0c306e0eaa585688e6",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://15c8424a1a5a2f8e0b26794f6b8870d54de26411c4e0959b4e5bd8dc070b2a4d",
+				"dweb:/ipfs/QmPigRLLqVFUmvpquofKL75C4tSMWnyjqEcPyQrRQpse6y"
+			]
+		}
+	},
+	"version": 1
+}

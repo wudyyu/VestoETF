@@ -18,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/interfaces/IETFMining.sol": "Name"
+			"contracts/interfaces/IETFMining.sol": "IETFMini"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -38,11 +38,11 @@
 	},
 	"sources": {
 		"contracts/interfaces/IETFMining.sol": {
-			"keccak256": "0x04499a6fba28a87a9fdc36572843881677e2d918e5b5fed81ac8a618db219cf0",
+			"keccak256": "0x6fbde25b41e104efb2d0655ab40530beec08fc9a2bb7cd66fe088de5736e7d5c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2cd4bced3dfb631b4619c513228bfe9c8c006db1cd5032bc690cfe248078c40c",
-				"dweb:/ipfs/QmbXVyToNHvx7zsW7SNi7uETdWGrpji8wnK78DmyvFPZi3"
+				"bzz-raw://c69831ff6f09a56f5b211ceb819a85185139e1690e5a06d3d6dab2da946ab7ee",
+				"dweb:/ipfs/QmTzaQAPu88ThZfRmtDmBmHnjRbgxfeuJLSxufM6pkF782"
 			]
 		}
 	},

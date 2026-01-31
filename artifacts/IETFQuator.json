@@ -1,0 +1,226 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"getAllPaths(address,address)": "d070166d",
+			"quoteExactIn(address,address,uint256)": "12be4fe0",
+			"quoteExactOut(address,address,uint256)": "7020df95",
+			"quoteInvestWithToken(address,address,uint256)": "4d3d06d0",
+			"quoteRedeemToToken(address,address,uint256)": "0816b425"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [],
+			"name": "SameTokens",
+			"type": "error"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "tokenA",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "tokenB",
+					"type": "address"
+				}
+			],
+			"name": "getAllPaths",
+			"outputs": [
+				{
+					"internalType": "bytes[]",
+					"name": "paths",
+					"type": "bytes[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "tokenIn",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "tokenOut",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "amountIn",
+					"type": "uint256"
+				}
+			],
+			"name": "quoteExactIn",
+			"outputs": [
+				{
+					"internalType": "bytes",
+					"name": "path",
+					"type": "bytes"
+				},
+				{
+					"internalType": "uint256",
+					"name": "amountOut",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "tokenIn",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "tokenOut",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "amountOut",
+					"type": "uint256"
+				}
+			],
+			"name": "quoteExactOut",
+			"outputs": [
+				{
+					"internalType": "bytes",
+					"name": "path",
+					"type": "bytes"
+				},
+				{
+					"internalType": "uint256",
+					"name": "amountIn",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "etf",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "srcToken",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "mintAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "quoteInvestWithToken",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "srcAmount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bytes[]",
+					"name": "swapPaths",
+					"type": "bytes[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "etf",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "dstToken",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "burnAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "quoteRedeemToToken",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "dstAmount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bytes[]",
+					"name": "swapPaths",
+					"type": "bytes[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	]
+}

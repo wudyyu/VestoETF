@@ -1,0 +1,974 @@
+{
+	"id": "9f7144f91edb1506873291228fb3879d",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.30",
+	"solcLongVersion": "0.8.30+commit.73712a01",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/interfaces/IETFSwapRouter.sol": {
+				"content": "// SPDX-License-Identifier: GPL-3.0-or-later\npragma solidity ^0.8.20;\npragma abicoder v2;\n\nimport \"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol\";\n\ninterface IETFSwapRouter is IUniswapV3FlashCallback{\n    struct ExactInputSingleParams {\n        address tokenIn;\n        address tokenOut;\n        uint24 fee;\n        address recipient;\n        uint256 amountIn;\n        uint256 amountOutMinimum;\n        uint160 sqrtPriceLimitX96;\n    }\n\n    /// @notice Swaps amountin of one token for as much as possible of another token\n    /// @dev Setting amountin to 0 will cause the contract to look up its own balance,\n    /// and swap the entire amount, enabling contracts to send tokens before calling this function.\n    /// @param params The parameters necessary for the swap, encoded as 'ExactInputSingleParams' in calldata\n    /// @return amountOut The amount of the received token\n    function exactInputSingle(\n        ExactInputSingleParams calldata params\n    ) external payable returns (uint256 amountOut);\n\n    struct ExactInputParams {\n        bytes path;\n        address recipient;\n        uint256 amountin;\n        uint256 amountOutMinimum;\n    }\n}"
+			},
+			"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol": {
+				"content": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\n/// @title Callback for IUniswapV3PoolActions#flash\n/// @notice Any contract that calls IUniswapV3PoolActions#flash must implement this interface\ninterface IUniswapV3FlashCallback {\n    /// @notice Called to `msg.sender` after transferring to the recipient from IUniswapV3Pool#flash.\n    /// @dev In the implementation you must repay the pool the tokens sent by flash plus the computed fee amounts.\n    /// The caller of this method must be checked to be a UniswapV3Pool deployed by the canonical UniswapV3Factory.\n    /// @param fee0 The fee amount in token0 due to the pool by the end of the flash\n    /// @param fee1 The fee amount in token1 due to the pool by the end of the flash\n    /// @param data Any data passed through by the caller via the IUniswapV3PoolActions#flash call\n    function uniswapV3FlashCallback(\n        uint256 fee0,\n        uint256 fee1,\n        bytes calldata data\n    ) external;\n}\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": [
+				"@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+				"erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+				"forge-std/=lib/openzeppelin-contracts/lib/forge-std/src/",
+				"halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/"
+			]
+		}
+	},
+	"output": {
+		"contracts": {
+			"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol": {
+				"IUniswapV3FlashCallback": {
+					"abi": [
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "fee0",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "fee1",
+									"type": "uint256"
+								},
+								{
+									"internalType": "bytes",
+									"name": "data",
+									"type": "bytes"
+								}
+							],
+							"name": "uniswapV3FlashCallback",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {
+							"uniswapV3FlashCallback(uint256,uint256,bytes)": {
+								"details": "In the implementation you must repay the pool the tokens sent by flash plus the computed fee amounts. The caller of this method must be checked to be a UniswapV3Pool deployed by the canonical UniswapV3Factory.",
+								"params": {
+									"data": "Any data passed through by the caller via the IUniswapV3PoolActions#flash call",
+									"fee0": "The fee amount in token0 due to the pool by the end of the flash",
+									"fee1": "The fee amount in token1 due to the pool by the end of the flash"
+								}
+							}
+						},
+						"title": "Callback for IUniswapV3PoolActions#flash",
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"uniswapV3FlashCallback(uint256,uint256,bytes)": "e9cbafb0"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"fee0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fee1\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"uniswapV3FlashCallback\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"uniswapV3FlashCallback(uint256,uint256,bytes)\":{\"details\":\"In the implementation you must repay the pool the tokens sent by flash plus the computed fee amounts. The caller of this method must be checked to be a UniswapV3Pool deployed by the canonical UniswapV3Factory.\",\"params\":{\"data\":\"Any data passed through by the caller via the IUniswapV3PoolActions#flash call\",\"fee0\":\"The fee amount in token0 due to the pool by the end of the flash\",\"fee1\":\"The fee amount in token1 due to the pool by the end of the flash\"}}},\"title\":\"Callback for IUniswapV3PoolActions#flash\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"uniswapV3FlashCallback(uint256,uint256,bytes)\":{\"notice\":\"Called to `msg.sender` after transferring to the recipient from IUniswapV3Pool#flash.\"}},\"notice\":\"Any contract that calls IUniswapV3PoolActions#flash must implement this interface\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol\":\"IUniswapV3FlashCallback\"},\"evmVersion\":\"prague\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/openzeppelin-contracts/lib/forge-std/src/\",\":halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/\"]},\"sources\":{\"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol\":{\"keccak256\":\"0x151ba1777392771025f0fca946c95fbc16ec4b5eff05e1f236115b99bd574de2\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://738a50c25d9d26ca3fabb1865bf6a0cdd8d7a2eec9dbfbd1fc000c81fb8e2b5e\",\"dweb:/ipfs/QmQjgCiLhrq5eLJgQcVHV24MRHyf6YdVzrGH8Ms7LnSSRA\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {
+							"uniswapV3FlashCallback(uint256,uint256,bytes)": {
+								"notice": "Called to `msg.sender` after transferring to the recipient from IUniswapV3Pool#flash."
+							}
+						},
+						"notice": "Any contract that calls IUniswapV3PoolActions#flash must implement this interface",
+						"version": 1
+					}
+				}
+			},
+			"contracts/interfaces/IETFSwapRouter.sol": {
+				"IETFSwapRouter": {
+					"abi": [
+						{
+							"inputs": [
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "tokenIn",
+											"type": "address"
+										},
+										{
+											"internalType": "address",
+											"name": "tokenOut",
+											"type": "address"
+										},
+										{
+											"internalType": "uint24",
+											"name": "fee",
+											"type": "uint24"
+										},
+										{
+											"internalType": "address",
+											"name": "recipient",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "amountIn",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "amountOutMinimum",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint160",
+											"name": "sqrtPriceLimitX96",
+											"type": "uint160"
+										}
+									],
+									"internalType": "struct IETFSwapRouter.ExactInputSingleParams",
+									"name": "params",
+									"type": "tuple"
+								}
+							],
+							"name": "exactInputSingle",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "amountOut",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "payable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "fee0",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "fee1",
+									"type": "uint256"
+								},
+								{
+									"internalType": "bytes",
+									"name": "data",
+									"type": "bytes"
+								}
+							],
+							"name": "uniswapV3FlashCallback",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {
+							"exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))": {
+								"details": "Setting amountin to 0 will cause the contract to look up its own balance, and swap the entire amount, enabling contracts to send tokens before calling this function.",
+								"params": {
+									"params": "The parameters necessary for the swap, encoded as 'ExactInputSingleParams' in calldata"
+								},
+								"returns": {
+									"amountOut": "The amount of the received token"
+								}
+							},
+							"uniswapV3FlashCallback(uint256,uint256,bytes)": {
+								"details": "In the implementation you must repay the pool the tokens sent by flash plus the computed fee amounts. The caller of this method must be checked to be a UniswapV3Pool deployed by the canonical UniswapV3Factory.",
+								"params": {
+									"data": "Any data passed through by the caller via the IUniswapV3PoolActions#flash call",
+									"fee0": "The fee amount in token0 due to the pool by the end of the flash",
+									"fee1": "The fee amount in token1 due to the pool by the end of the flash"
+								}
+							}
+						},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))": "04e45aaf",
+							"uniswapV3FlashCallback(uint256,uint256,bytes)": "e9cbafb0"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"tokenIn\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenOut\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"fee\",\"type\":\"uint24\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amountIn\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountOutMinimum\",\"type\":\"uint256\"},{\"internalType\":\"uint160\",\"name\":\"sqrtPriceLimitX96\",\"type\":\"uint160\"}],\"internalType\":\"struct IETFSwapRouter.ExactInputSingleParams\",\"name\":\"params\",\"type\":\"tuple\"}],\"name\":\"exactInputSingle\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"amountOut\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"fee0\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fee1\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"uniswapV3FlashCallback\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))\":{\"details\":\"Setting amountin to 0 will cause the contract to look up its own balance, and swap the entire amount, enabling contracts to send tokens before calling this function.\",\"params\":{\"params\":\"The parameters necessary for the swap, encoded as 'ExactInputSingleParams' in calldata\"},\"returns\":{\"amountOut\":\"The amount of the received token\"}},\"uniswapV3FlashCallback(uint256,uint256,bytes)\":{\"details\":\"In the implementation you must repay the pool the tokens sent by flash plus the computed fee amounts. The caller of this method must be checked to be a UniswapV3Pool deployed by the canonical UniswapV3Factory.\",\"params\":{\"data\":\"Any data passed through by the caller via the IUniswapV3PoolActions#flash call\",\"fee0\":\"The fee amount in token0 due to the pool by the end of the flash\",\"fee1\":\"The fee amount in token1 due to the pool by the end of the flash\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))\":{\"notice\":\"Swaps amountin of one token for as much as possible of another token\"},\"uniswapV3FlashCallback(uint256,uint256,bytes)\":{\"notice\":\"Called to `msg.sender` after transferring to the recipient from IUniswapV3Pool#flash.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IETFSwapRouter.sol\":\"IETFSwapRouter\"},\"evmVersion\":\"prague\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[\":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/\",\":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/\",\":forge-std/=lib/openzeppelin-contracts/lib/forge-std/src/\",\":halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/\"]},\"sources\":{\"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol\":{\"keccak256\":\"0x151ba1777392771025f0fca946c95fbc16ec4b5eff05e1f236115b99bd574de2\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://738a50c25d9d26ca3fabb1865bf6a0cdd8d7a2eec9dbfbd1fc000c81fb8e2b5e\",\"dweb:/ipfs/QmQjgCiLhrq5eLJgQcVHV24MRHyf6YdVzrGH8Ms7LnSSRA\"]},\"contracts/interfaces/IETFSwapRouter.sol\":{\"keccak256\":\"0xc3a2cc22ad57da5dfeced88421e7b2476498b24184fb7c0c306e0eaa585688e6\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://15c8424a1a5a2f8e0b26794f6b8870d54de26411c4e0959b4e5bd8dc070b2a4d\",\"dweb:/ipfs/QmPigRLLqVFUmvpquofKL75C4tSMWnyjqEcPyQrRQpse6y\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {
+							"exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))": {
+								"notice": "Swaps amountin of one token for as much as possible of another token"
+							},
+							"uniswapV3FlashCallback(uint256,uint256,bytes)": {
+								"notice": "Called to `msg.sender` after transferring to the recipient from IUniswapV3Pool#flash."
+							}
+						},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol": {
+				"ast": {
+					"absolutePath": "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol",
+					"exportedSymbols": {
+						"IUniswapV3FlashCallback": [
+							13
+						]
+					},
+					"id": 14,
+					"license": "GPL-2.0-or-later",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								">=",
+								"0.5",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "45:24:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "IUniswapV3FlashCallback",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"documentation": {
+								"id": 2,
+								"nodeType": "StructuredDocumentation",
+								"src": "71:146:0",
+								"text": "@title Callback for IUniswapV3PoolActions#flash\n @notice Any contract that calls IUniswapV3PoolActions#flash must implement this interface"
+							},
+							"fullyImplemented": false,
+							"id": 13,
+							"linearizedBaseContracts": [
+								13
+							],
+							"name": "IUniswapV3FlashCallback",
+							"nameLocation": "227:23:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"documentation": {
+										"id": 3,
+										"nodeType": "StructuredDocumentation",
+										"src": "257:597:0",
+										"text": "@notice Called to `msg.sender` after transferring to the recipient from IUniswapV3Pool#flash.\n @dev In the implementation you must repay the pool the tokens sent by flash plus the computed fee amounts.\n The caller of this method must be checked to be a UniswapV3Pool deployed by the canonical UniswapV3Factory.\n @param fee0 The fee amount in token0 due to the pool by the end of the flash\n @param fee1 The fee amount in token1 due to the pool by the end of the flash\n @param data Any data passed through by the caller via the IUniswapV3PoolActions#flash call"
+									},
+									"functionSelector": "e9cbafb0",
+									"id": 12,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "uniswapV3FlashCallback",
+									"nameLocation": "868:22:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 10,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 5,
+												"mutability": "mutable",
+												"name": "fee0",
+												"nameLocation": "908:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 12,
+												"src": "900:12:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 4,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "900:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 7,
+												"mutability": "mutable",
+												"name": "fee1",
+												"nameLocation": "930:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 12,
+												"src": "922:12:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 6,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "922:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 9,
+												"mutability": "mutable",
+												"name": "data",
+												"nameLocation": "959:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 12,
+												"src": "944:19:0",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes_calldata_ptr",
+													"typeString": "bytes"
+												},
+												"typeName": {
+													"id": 8,
+													"name": "bytes",
+													"nodeType": "ElementaryTypeName",
+													"src": "944:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes_storage_ptr",
+														"typeString": "bytes"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "890:79:0"
+									},
+									"returnParameters": {
+										"id": 11,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "978:0:0"
+									},
+									"scope": 13,
+									"src": "859:120:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 14,
+							"src": "217:764:0",
+							"usedErrors": [],
+							"usedEvents": []
+						}
+					],
+					"src": "45:937:0"
+				},
+				"id": 0
+			},
+			"contracts/interfaces/IETFSwapRouter.sol": {
+				"ast": {
+					"absolutePath": "contracts/interfaces/IETFSwapRouter.sol",
+					"exportedSymbols": {
+						"IETFSwapRouter": [
+							53
+						],
+						"IUniswapV3FlashCallback": [
+							13
+						]
+					},
+					"id": 54,
+					"license": "GPL-3.0-or-later",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 15,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".20"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "45:24:1"
+						},
+						{
+							"id": 16,
+							"literals": [
+								"abicoder",
+								"v2"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "70:19:1"
+						},
+						{
+							"absolutePath": "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol",
+							"file": "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol",
+							"id": 17,
+							"nameLocation": "-1:-1:-1",
+							"nodeType": "ImportDirective",
+							"scope": 54,
+							"sourceUnit": 14,
+							"src": "91:84:1",
+							"symbolAliases": [],
+							"unitAlias": ""
+						},
+						{
+							"abstract": false,
+							"baseContracts": [
+								{
+									"baseName": {
+										"id": 18,
+										"name": "IUniswapV3FlashCallback",
+										"nameLocations": [
+											"205:23:1"
+										],
+										"nodeType": "IdentifierPath",
+										"referencedDeclaration": 13,
+										"src": "205:23:1"
+									},
+									"id": 19,
+									"nodeType": "InheritanceSpecifier",
+									"src": "205:23:1"
+								}
+							],
+							"canonicalName": "IETFSwapRouter",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 53,
+							"linearizedBaseContracts": [
+								53,
+								13
+							],
+							"name": "IETFSwapRouter",
+							"nameLocation": "187:14:1",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"canonicalName": "IETFSwapRouter.ExactInputSingleParams",
+									"id": 34,
+									"members": [
+										{
+											"constant": false,
+											"id": 21,
+											"mutability": "mutable",
+											"name": "tokenIn",
+											"nameLocation": "282:7:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 34,
+											"src": "274:15:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 20,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "274:7:1",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 23,
+											"mutability": "mutable",
+											"name": "tokenOut",
+											"nameLocation": "307:8:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 34,
+											"src": "299:16:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 22,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "299:7:1",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 25,
+											"mutability": "mutable",
+											"name": "fee",
+											"nameLocation": "332:3:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 34,
+											"src": "325:10:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint24",
+												"typeString": "uint24"
+											},
+											"typeName": {
+												"id": 24,
+												"name": "uint24",
+												"nodeType": "ElementaryTypeName",
+												"src": "325:6:1",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint24",
+													"typeString": "uint24"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 27,
+											"mutability": "mutable",
+											"name": "recipient",
+											"nameLocation": "353:9:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 34,
+											"src": "345:17:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 26,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "345:7:1",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 29,
+											"mutability": "mutable",
+											"name": "amountIn",
+											"nameLocation": "380:8:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 34,
+											"src": "372:16:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 28,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "372:7:1",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 31,
+											"mutability": "mutable",
+											"name": "amountOutMinimum",
+											"nameLocation": "406:16:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 34,
+											"src": "398:24:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 30,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "398:7:1",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 33,
+											"mutability": "mutable",
+											"name": "sqrtPriceLimitX96",
+											"nameLocation": "440:17:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 34,
+											"src": "432:25:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint160",
+												"typeString": "uint160"
+											},
+											"typeName": {
+												"id": 32,
+												"name": "uint160",
+												"nodeType": "ElementaryTypeName",
+												"src": "432:7:1",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint160",
+													"typeString": "uint160"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "ExactInputSingleParams",
+									"nameLocation": "241:22:1",
+									"nodeType": "StructDefinition",
+									"scope": 53,
+									"src": "234:230:1",
+									"visibility": "public"
+								},
+								{
+									"documentation": {
+										"id": 35,
+										"nodeType": "StructuredDocumentation",
+										"src": "470:435:1",
+										"text": "@notice Swaps amountin of one token for as much as possible of another token\n @dev Setting amountin to 0 will cause the contract to look up its own balance,\n and swap the entire amount, enabling contracts to send tokens before calling this function.\n @param params The parameters necessary for the swap, encoded as 'ExactInputSingleParams' in calldata\n @return amountOut The amount of the received token"
+									},
+									"functionSelector": "04e45aaf",
+									"id": 43,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "exactInputSingle",
+									"nameLocation": "919:16:1",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 39,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 38,
+												"mutability": "mutable",
+												"name": "params",
+												"nameLocation": "977:6:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 43,
+												"src": "945:38:1",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_ExactInputSingleParams_$34_calldata_ptr",
+													"typeString": "struct IETFSwapRouter.ExactInputSingleParams"
+												},
+												"typeName": {
+													"id": 37,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 36,
+														"name": "ExactInputSingleParams",
+														"nameLocations": [
+															"945:22:1"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 34,
+														"src": "945:22:1"
+													},
+													"referencedDeclaration": 34,
+													"src": "945:22:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_ExactInputSingleParams_$34_storage_ptr",
+														"typeString": "struct IETFSwapRouter.ExactInputSingleParams"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "935:54:1"
+									},
+									"returnParameters": {
+										"id": 42,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 41,
+												"mutability": "mutable",
+												"name": "amountOut",
+												"nameLocation": "1024:9:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 43,
+												"src": "1016:17:1",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 40,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1016:7:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1015:19:1"
+									},
+									"scope": 53,
+									"src": "910:125:1",
+									"stateMutability": "payable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"canonicalName": "IETFSwapRouter.ExactInputParams",
+									"id": 52,
+									"members": [
+										{
+											"constant": false,
+											"id": 45,
+											"mutability": "mutable",
+											"name": "path",
+											"nameLocation": "1081:4:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 52,
+											"src": "1075:10:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bytes_storage_ptr",
+												"typeString": "bytes"
+											},
+											"typeName": {
+												"id": 44,
+												"name": "bytes",
+												"nodeType": "ElementaryTypeName",
+												"src": "1075:5:1",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes_storage_ptr",
+													"typeString": "bytes"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 47,
+											"mutability": "mutable",
+											"name": "recipient",
+											"nameLocation": "1103:9:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 52,
+											"src": "1095:17:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 46,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "1095:7:1",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 49,
+											"mutability": "mutable",
+											"name": "amountin",
+											"nameLocation": "1130:8:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 52,
+											"src": "1122:16:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 48,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "1122:7:1",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 51,
+											"mutability": "mutable",
+											"name": "amountOutMinimum",
+											"nameLocation": "1156:16:1",
+											"nodeType": "VariableDeclaration",
+											"scope": 52,
+											"src": "1148:24:1",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 50,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "1148:7:1",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "ExactInputParams",
+									"nameLocation": "1048:16:1",
+									"nodeType": "StructDefinition",
+									"scope": 53,
+									"src": "1041:138:1",
+									"visibility": "public"
+								}
+							],
+							"scope": 54,
+							"src": "177:1004:1",
+							"usedErrors": [],
+							"usedEvents": []
+						}
+					],
+					"src": "45:1136:1"
+				},
+				"id": 1
+			}
+		}
+	}
+}

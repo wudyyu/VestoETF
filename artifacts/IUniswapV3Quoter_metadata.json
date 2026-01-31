@@ -1,0 +1,129 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "path",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountIn",
+						"type": "uint256"
+					}
+				],
+				"name": "quoteExactInput",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint160[]",
+						"name": "sqrtPriceX96AfterList",
+						"type": "uint160[]"
+					},
+					{
+						"internalType": "uint32[]",
+						"name": "initializedTicksCrossedList",
+						"type": "uint32[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "gasEstimate",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "path",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"name": "quoteExactOutput",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountIn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint160[]",
+						"name": "sqrtPriceX96AfterList",
+						"type": "uint160[]"
+					},
+					{
+						"internalType": "uint32[]",
+						"name": "initializedTicksCrossedList",
+						"type": "uint32[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "gasEstimate",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interfaces/IUniswapV3Quoter.sol": "IUniswapV3Quoter"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": [
+			":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+			":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+			":forge-std/=lib/openzeppelin-contracts/lib/forge-std/src/",
+			":halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/"
+		]
+	},
+	"sources": {
+		"contracts/interfaces/IUniswapV3Quoter.sol": {
+			"keccak256": "0x5267374ddb3eb92761a3e6ced5d5e762277958ede81a70dee0d5e9804380af59",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://90edf12922b4a3a18d6d983f5366a4f0d4b1d0110452aecf89cb40e6529c018a",
+				"dweb:/ipfs/QmR8Bo1rEWvLeeSF8rKN7Wbod8YkqLKzdsKLLDg2oasQA4"
+			]
+		}
+	},
+	"version": 1
+}

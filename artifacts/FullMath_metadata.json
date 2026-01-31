@@ -18,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/interfaces/IETFMining.sol": "Name"
+			"contracts/libraries/FullMath.sol": "FullMath"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -37,12 +37,12 @@
 		]
 	},
 	"sources": {
-		"contracts/interfaces/IETFMining.sol": {
-			"keccak256": "0x04499a6fba28a87a9fdc36572843881677e2d918e5b5fed81ac8a618db219cf0",
-			"license": "MIT",
+		"contracts/libraries/FullMath.sol": {
+			"keccak256": "0xff2ae239217c62cdc85746e265c741e8daed2017a2fe9c5bce2e32727269b966",
+			"license": "GPL-3.0-or-later",
 			"urls": [
-				"bzz-raw://2cd4bced3dfb631b4619c513228bfe9c8c006db1cd5032bc690cfe248078c40c",
-				"dweb:/ipfs/QmbXVyToNHvx7zsW7SNi7uETdWGrpji8wnK78DmyvFPZi3"
+				"bzz-raw://9fb432f7e2d8bb2e4eaab8a354d9b84407e69b9a0609f31fc265d996bd8a5998",
+				"dweb:/ipfs/QmSsu8yt48eT3HPGwMwyr8gvwpnKMfBYGErPAoFZc41xiB"
 			]
 		}
 	},

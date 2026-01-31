@@ -18,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/interfaces/IETFMining.sol": "Name"
+			"contracts/interfaces/IETFSwapRouter.sol": "IETFSwap"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -37,12 +37,12 @@
 		]
 	},
 	"sources": {
-		"contracts/interfaces/IETFMining.sol": {
-			"keccak256": "0x04499a6fba28a87a9fdc36572843881677e2d918e5b5fed81ac8a618db219cf0",
-			"license": "MIT",
+		"contracts/interfaces/IETFSwapRouter.sol": {
+			"keccak256": "0x56cb7510132ce41042b8ab3954091ce0754309cd876d867a2c6dc0cd4afa739e",
+			"license": "GPL-3.0-or-later",
 			"urls": [
-				"bzz-raw://2cd4bced3dfb631b4619c513228bfe9c8c006db1cd5032bc690cfe248078c40c",
-				"dweb:/ipfs/QmbXVyToNHvx7zsW7SNi7uETdWGrpji8wnK78DmyvFPZi3"
+				"bzz-raw://62775374f011514419ea1eb25b61396b4c5ce189dd5f60de6015d02542cfc982",
+				"dweb:/ipfs/QmYH7xzKootMyW9Vi18Pu1L2sYyu1UuuoFKYk5Bj1Smuvs"
 			]
 		}
 	},

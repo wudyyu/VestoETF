@@ -18,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/interfaces/IETFMining.sol": "Name"
+			"contracts/ETFQuator.sol": "ETFQuator"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -37,12 +37,12 @@
 		]
 	},
 	"sources": {
-		"contracts/interfaces/IETFMining.sol": {
-			"keccak256": "0x04499a6fba28a87a9fdc36572843881677e2d918e5b5fed81ac8a618db219cf0",
+		"contracts/ETFQuator.sol": {
+			"keccak256": "0xd007ee7057688804efb7c8571157841a4223fbe1bf02ac75103b23e1c24480b8",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2cd4bced3dfb631b4619c513228bfe9c8c006db1cd5032bc690cfe248078c40c",
-				"dweb:/ipfs/QmbXVyToNHvx7zsW7SNi7uETdWGrpji8wnK78DmyvFPZi3"
+				"bzz-raw://265ba05b15f1bcafaaa234d317123ee26a566e3ccffdc2af206d746dc6c92070",
+				"dweb:/ipfs/QmYcimvXHNosTAqnc4seuFWjVYqjb8MrpRDUsXvAtJqPPT"
 			]
 		}
 	},

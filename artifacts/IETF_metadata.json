@@ -18,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/interfaces/IETFTrading.sol": "IETF"
+			"contracts/interfaces/IETFQuator.sol": "IETF"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -29,15 +29,20 @@
 			"enabled": false,
 			"runs": 200
 		},
-		"remappings": []
+		"remappings": [
+			":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+			":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+			":forge-std/=lib/openzeppelin-contracts/lib/forge-std/src/",
+			":halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/"
+		]
 	},
 	"sources": {
-		"contracts/interfaces/IETFTrading.sol": {
-			"keccak256": "0xac2ed2e1768bef902d365d7ee0349b027b1f5d4d855e2cddf96091e0b6f03bb1",
-			"license": "MIT",
+		"contracts/interfaces/IETFQuator.sol": {
+			"keccak256": "0x2b534179388cb0171259364588826e5949b680ec1c33b9e659efad1698c47abe",
+			"license": "GPL-3.0-or-later",
 			"urls": [
-				"bzz-raw://691742af7deab6d46e59d7d3c615f78c648d8fc0323819e8c7824f6b9ac3794c",
-				"dweb:/ipfs/QmeoaRGdDFvCzRxMdsjHVtzZukJj2eXdptUKRtrjWVHd9z"
+				"bzz-raw://c0206c75c67928f15d858f4fbf358b39dbcc80b70ed5f37731b325fecbcc742c",
+				"dweb:/ipfs/QmbhFFe5Z1RbJ3YMtAKodUTJtPd9zHQ6XpoKcx56sAuaZc"
 			]
 		}
 	},
